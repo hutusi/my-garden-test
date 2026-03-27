@@ -1,10 +1,12 @@
 ---
-title: "Algorithms and Data Structures"
-date: "2026-01-28"
-tags: ["algorithms", "computer-science", "fundamentals"]
-aliases: ["algorithms"]
+title: Algorithms and Data Structures
+date: '2026-01-28'
+tags:
+  - algorithms
+  - computer-science
+  - fundamentals
+aliases: algorithms
 ---
-
 Algorithms and data structures are the grammar of computation. You can write software without thinking about them explicitly, but the moment performance matters — or the problem gets hard — you need this vocabulary.
 
 ## Why They Still Matter
@@ -34,18 +36,18 @@ Sorting algorithms are pedagogically valuable because they expose different algo
 - **QuickSort** — O(n log n) average, O(n²) worst case, but cache-friendly and in-place
 - **HeapSort** — O(n log n) guaranteed, O(1) space, but not stable and poor cache behavior
 
-The [[the-art-of-algorithms|QuickSort deep dive]] post covers the implementation and visualization in detail.
+The \[\[the-art-of-algorithms|QuickSort deep dive\]\] post covers the implementation and visualization in detail.
 
 ## Complexity Intuition
 
 A useful mental model: for n = 1,000,000 operations per second,
 
 | Complexity | n=1000 | n=1,000,000 |
-|-----------|--------|-------------|
-| O(1)      | instant | instant |
-| O(log n)  | ~10 ops | ~20 ops |
-| O(n)      | 1ms     | 1s |
-| O(n log n)| ~10ms   | ~20s |
-| O(n²)     | 1s      | 11.5 days |
+| --- | --- | --- |
+| O(1) | instant | instant |
+| O(log n) | \~10 ops | \~20 ops |
+| O(n) | 1ms | 1s |
+| O(n log n) | \~10ms | \~20s |
+| O(n²) | 1s | 11.5 days |
 
 This table should be tattooed on the inside of every programmer's eyelids.

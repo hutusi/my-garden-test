@@ -6,7 +6,6 @@ category: "Meta"
 tags: ["markdown", "legacy"]
 author: "Old Timer"
 ---
-
 # Legacy Markdown Support
 
 This post is written in a standard `.md` file, not `.mdx`.
@@ -17,7 +16,7 @@ Migration from other systems (Jekyll, Hugo) often involves thousands of `.md` fi
 
 ## Footnotes
 
-Footnote test[^test].
+Footnote test\[^test\].
 
 One of the main benefits of `.md` support is seamless migration. If you're moving from Jekyll, Hugo, or another static site generator, your existing posts can be dropped into the `content/posts/` directory without any changes. Frontmatter fields like `title`, `date`, and `tags` are parsed identically for both formats.
 
@@ -34,25 +33,20 @@ console.log("Hello from .md file!");
 
 ## References
 
-This is a [link to markdown guide][md-guide].
+This is a \[link to markdown guide\]\[md-guide\].
 
 Internal links: [Home](/) and [Archives](/archive).
 
 ## More Reference Links
 
-Reference links test: [Markdown Guide][guide], [CommonMark][commonmark].
-
-[guide]: https://www.markdownguide.org
-[commonmark]: https://commonmark.org
+Reference links test: [Markdown Guide](https://www.markdownguide.org), [CommonMark](https://commonmark.org).
 
 ### markdown table
 
 | Feature | Sum | Notes |
-| :--- | :---: | :--- |
+| --- | --- | --- |
 | Tables | `>` 10 | Requires remark-gfm |
 | Task Lists | 5 | Checkboxes |
 | Strikethrough | 1 | ~~Deleted~~ |
 
-
-[^test]: A simple footnote.
-
+\[^test\]: A simple footnote.
