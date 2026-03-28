@@ -4,12 +4,13 @@ date: "2026-02-20"
 excerpt: "A deep dive into the trade-offs between client-side language switching and proper URL-based locale routing for a statically exported Next.js digital garden."
 tags: ["nextjs", "i18n", "seo", "static-site"]
 ---
-
 When building a multilingual static blog with Next.js, there are two fundamentally different approaches to internationalisation. Choosing between them involves trade-offs across SEO, developer experience, content strategy, and hosting complexity.
 
 ## The Client-Side Toggle Approach
 
 The simplest approach stores language preference in client state and resolves translations after hydration:
+
+hello
 
 ```tsx
 // Language stored in context, resolved on the client
@@ -32,9 +33,9 @@ This works and is zero-config — no routing changes needed. But it has real lim
 ### SEO Problems
 
 - **Crawlers always see the default language.** Googlebot doesn't execute `localStorage` reads, so it always indexes the default locale's content.
-- **`display:none` content is risky.** Google may partially index hidden locale variants, or ignore them entirely.
-- **No `hreflang` signals.** Search engines can't discover alternate language versions of a page.
-- **`<html lang>` not updated.** Accessibility and search engine tooling rely on this attribute.
+- `display:none` **content is risky.** Google may partially index hidden locale variants, or ignore them entirely.
+- **No** `hreflang` **signals.** Search engines can't discover alternate language versions of a page.
+- `<html lang>` **not updated.** Accessibility and search engine tooling rely on this attribute.
 
 ---
 
@@ -65,8 +66,7 @@ Drop a `_redirects` file in `public/`:
 /*               /en/:splat   200
 ```
 
-
-test 
+test
 
 The `200` status is a **silent rewrite** — the user sees `/about` in the URL bar, but the server serves `out/en/about/index.html`.
 
@@ -113,7 +113,7 @@ URL-based routing changes more than just URLs — it changes how you think about
 For a personal digital garden, most content is written in one language and won't be fully translated. The realistic scope is:
 
 | Content Type | Translated? | Approach |
-|---|---|---|
+| --- | --- | --- |
 | Static pages (about, privacy) | Yes | Optional `.zh.mdx` variant files |
 | Posts | Rarely | Fallback to original + notice |
 | Series descriptions | Maybe | Optional `index.zh.mdx` |
@@ -135,10 +135,10 @@ At build time, `generateStaticParams` generates `/en/my-post` and `/zh/my-post`.
 ## Trade-offs at a Glance
 
 | Aspect | Client-Side Toggle | URL-Based Routing |
-|---|---|---|
+| --- | --- | --- |
 | SEO | Crawlers see default lang only | Each locale fully indexed |
 | Default locale prefix | No prefix | CDN rewrite needed |
-| Build size | Same | ~2× |
+| Build size | Same | \~2× |
 | Refactor scope | None | Large |
 | Content strategy | `.zh.mdx` for pages only | `.zh.mdx` for all content types |
 
